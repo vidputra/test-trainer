@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Logic Text | FizzBuzz</title>
+  </head>
+  <body>
+
+    <span id="initial"></span>
+
+    <br>
+
+    <button onclick="handleClick()">Get Nearest Fibonacci</button>
+
+    <br>
+
+    <p id="result"></p>
+    <p id="add"></p>
+
+    <script>
+      const arr = [15, 1, 3];
+      const initial = document.getElementById('initial');
+      initial.innerHTML = `[${arr.join(', ')}]`
+
+      function checkNuearestFibonacci(arr) {
+        let value = 0;
+
+        for(var i = 0; i < arr.length; i++) {
+          value += arr[i]
+        }
+
+        // Base Case
+        if (value == 0) {
+          return {
+            add: 0,
+            result: 0,
+            value: value,
+          };
+        }
+
+        // inisialisasi aturan pertama dan kedua dari seri fibonacci
+        let first = 0, second = 1;
+
+        // simpan aturan ketiga
+        let third = first + second;
+
+        // iterasi sampai aturan ketiga lebih kecil atau sama dengan value
+        while (third <= value) {
+          // update variabel first
+          first = second;
+
+          // update variabel second
+          second = third;
+
+          // update variabel third
+          third = first + second;
+        }
+
+        // Print the result
+        return {
+          add: (Math.abs(third - value) >= Math.abs(second - value)) ? `reduced it by ${Math.abs(second - value)}` : `add it by ${Math.abs(third - value)}`,
+          result: (Math.abs(third - value) >= Math.abs(second - value)) ? second : third,
+          value: value
+        }
+      }
+
+      function handleClick() {
+        // ambil value dari element html
+        const add =  document.getElementById('add');
+        const result =  document.getElementById('result');
+
+        // cek apakah variabel result tidak undefined
+        if (result) {
+          // panggil function yg kemudian ditampilkan ke variabel add dan result
+          add.innerHTML = `So we need to ${checkNuearestFibonacci(arr).add}`;
+          result.innerHTML = `Nearest Fibonacci number to ${checkNuearestFibonacci(arr).value} is ${checkNuearestFibonacci(arr).result}`;
+        }
+      }
+    </script>
+  </body>
+</html>

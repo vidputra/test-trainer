@@ -1,0 +1,49 @@
+<html>
+  <head>
+      <title>Logic Test | Reserve Words</title>
+  </head>
+  <body>
+
+    <div>
+      <label>Input: </label>
+      <input id="input">
+    </div>
+
+    <button onclick="handleClick()">Check Reverse</button>
+
+    <br>
+
+    <span id="result"></span>
+
+    <script>
+        function reverseString(str) {
+            // Step 1. Use the split() method to return a new array
+            var splitString = str.split(""); // var splitString = "hello".split("");
+            // ["h", "e", "l", "l", "o"]
+
+            // Step 2. Use the reverse() method to reverse the new created array
+            var reverseArray = splitString.reverse(); // var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+            // ["o", "l", "l", "e", "h"]
+
+            // Step 3. Use the join() method to join all elements of the array into a string
+            var joinArray = reverseArray.join(""); // var joinArray = ["o", "l", "l", "e", "h"].join("");
+            // "olleh"
+
+            //Step 4. Return the reversed string
+            return joinArray; // "olleh"
+        }
+
+        function handleClick() {
+          // ambil value dari element html
+          const input = document.getElementById('input');
+          const result =  document.getElementById('result');
+
+          // cek apakah variabel input dan result tidak undefined
+          if (input && result) {
+            // panggil function yg kemudian ditampilkan ke variabel result
+            result.innerHTML = reverseString(input.value);;
+          }
+        }
+    </script>
+  </body>
+</html>

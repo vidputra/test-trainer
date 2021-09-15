@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Logic Text | FizzBuzz</title>
+  </head>
+  <body>
+
+    <div>
+      <label>Input number: </label>
+      <input id="input">
+    </div>
+
+    <button onclick="handleClick()">Check FizzBuzz</button>
+
+    <br>
+
+    <span id="result"></span>
+
+    <script>
+      function checkFizzBuzz(value) {
+        const arr = [];
+
+        // mengecek apabila value nya bukan number
+        if (isNaN(value)) return ['Invalid input'];
+
+        // untuk mendapatkan value antara Fizz, Buzz, FizzBuzz dan i
+        for (var i = 1; i <= value; i++) {
+          const fizz = i % 3 == 0;
+          const buzz = i % 5 == 0;
+
+          if(fizz) {
+            if(buzz) {
+              arr.push('FizzBuzz');
+            } else {
+              arr.push('Fizz');
+            }
+          } else if (buzz) {
+            arr.push('Buzz');
+          } else {
+            arr.push(i);
+          }
+        }
+
+        return `[${arr.join(', ')}]`
+      }
+
+      function handleClick() {
+        // ambil value dari element html
+        const input = document.getElementById('input');
+        const result =  document.getElementById('result');
+
+        // cek apakah variabel input dan result tidak undefined
+        if (input && result) {
+          // panggil function yg kemudian ditampilkan ke variabel result
+          result.innerHTML = checkFizzBuzz(input.value);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Logic Test | Leap Year</title>
+  </head>
+  <body>
+    <div>
+      <label>Start year: </label>
+      <input id="startYear">
+    </div>
+
+    <div>
+      <label>End year: </label>
+      <input id="endYear">
+    </div>
+
+    <button onclick="handleClick()">Check List Leap Years</button>
+
+    <br>
+
+    <span id="result"></span>
+
+    <script>
+      function getLeapYears(start, end) {
+        var startYear = Math.ceil(start / 4) * 4;
+        var endYear = Math.floor(end / 4) * 4;
+        var leapYears = [];
+
+        // mengecek apabila value type nya bukan number
+        if (isNaN(startYear) || isNaN(endYear)) return ['Invalid input'];
+
+        // untuk mendapatkan list leap years
+        while (startYear <= endYear) {
+          if ( startYear % 100 || !(startYear % 400)) {
+            leapYears.push(startYear);
+          }
+          startYear += 4;
+        }
+
+        return leapYears.length? leapYears : ['None']; 
+      }
+
+      function handleClick() {
+        // ambil value dari element html
+        const start = document.getElementById('startYear');
+        const end = document.getElementById('endYear');
+        const result =  document.getElementById('result');
+
+        // mengecek apakah variabel start, end dan result tidak undefined
+        if (start && end && result) {
+          // memanggil function yang akan ditampilkan ke variabel result
+          result.innerHTML = getLeapYears(start.value, end.value).join(', ');
+        }
+      }
+    </script>
+  </body>
+</html>

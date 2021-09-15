@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Logic Test | Palindrome</title>
+  </head>
+  <body>
+
+    <input type="text" id="input">
+    <div id="result"></div>
+
+    <script>
+      function checkPalindrome(e) {
+        // memasukkan value e ke variabel str
+        const str = e.target.value
+
+        // .split()
+        // untuk convert variabel str menjadi bentuk array dan memasukkannya ke variabel arrayValue
+        const arrayValue = str.split ('');
+
+        // .reverse()
+        // untuk me-reverse isi array dan memasukkannya ke variabel reverseArray
+        const reverseArray = arrayValue.reverse();   
+
+        // .join()
+        // untuk menggabungkan semua isi array menjadi satu string dan memasukkannya ke variabel reverseString
+        const reverseString = reverseArray.join('');  
+
+        // mengecek apakah isi variabel str sama dengan isi variabel reverseString
+        if (str == reverseString)
+        {
+          // jika kondisi benar atau true
+          result.innerHTML = 'palindrome';
+        }  
+        else {
+          // jika kondisinya salah atau false
+          result.innerHTML = 'not palindrome';
+        }  
+      }
+
+      // mengambil inputan user
+      const input = document.getElementById('input');
+
+      // mengambil element dengan id result untuk menampilkan hasil
+      const result = document.getElementById('result');
+
+      // memanggil function ketika user input string
+      input.addEventListener('input', checkPalindrome);
+    </script>
+  </body>
+</html>
